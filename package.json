@@ -18,7 +18,8 @@
   },
   "scripts": {
     "clean": "rm -rf .build",
-    "build": "yarn clean && tsc && chmod +x .build/cli.js"
+    "build": "yarn clean && tsc && chmod +x .build/cli.js",
+    "cm": "git-cz"
   },
   "dependencies": {
     "chalk": "^4.1.0",
