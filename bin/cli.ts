@@ -5,12 +5,13 @@ import * as fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import { sync } from "cross-spawn";
+import { execSync } from "child_process";
 
 yargs
   .scriptName("create-fastify-app")
   .usage("$0 <cmd> [args]")
   .command(
-    "create [appName]",
+    "$0 [appName]",
     "Set up a Fastify Boot app with one command..",
     (args) => {
       args.positional("appName", {
@@ -25,6 +26,7 @@ yargs
   .help().argv;
 
 function createProject(appName: string): void {
+  validateAppName(appName);
   console.log(chalk.cyan(`Creating new Fastify Boot project: ${appName}.`));
   const buildDir = fs.realpathSync(__dirname);
   const appDir = path.join(fs.realpathSync(process.cwd()), appName);
@@ -32,6 +34,39 @@ function createProject(appName: string): void {
   copyTemplate(buildDir, appDir);
   install(appDir);
   outputInstructions(appName);
+}
+
+function validateAppName(appName: string): void {
+  if (!appName) {
+    console.error(
+      chalk.redBright(
+        "No app name argument provided. Did you mean to use:\n\n" +
+          chalk.cyan("$ create-fastify-boot {appName}\n")
+      )
+    );
+    process.exit(1);
+  }
+}
+
+function useYarn(): boolean {
+  console.log(
+    chalk.yellow(
+      "Detected yarn installed on machine, using yarn instead of npm."
+    )
+  );
+  return isRuntimeAvailable("yarn");
+}
+
+function isRuntimeAvailable(dep: string): boolean {
+  return execCmd(`${dep} --version`) !== undefined;
+}
+
+function execCmd(command: string): string | undefined {
+  try {
+    return execSync(command).toString();
+  } catch (e) {
+    return undefined;
+  }
 }
 
 function copyTemplate(buildDir: string, appDir: string): void {
@@ -55,7 +90,9 @@ function makeAppDir(appDir: string, appName: string): void {
 function install(appDir: string): void {
   console.log(chalk.yellow(`Installing node dependencies.`));
   process.chdir(appDir);
-  const outcome = sync("yarn", ["install"], { stdio: "inherit" });
+  const outcome = sync(useYarn() ? "yarn" : "npm", ["install"], {
+    stdio: "inherit",
+  });
   if (
     outcome.signal &&
     (outcome.signal === "SIGKILL" || outcome.signal === "SIGTERM")

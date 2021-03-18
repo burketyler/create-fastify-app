@@ -15,7 +15,7 @@
     "access": "public"
   },
   "bin": {
-    "create-fastify-app": ".build/cli.js"
+    "create-fastify-boot": ".build/cli.js"
   },
   "scripts": {
     "clean": "rm -rf .build",
