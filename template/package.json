@@ -1,0 +1,24 @@
+{
+  "name": "my-app",
+  "description": "Fastify app created with create-fastify-app",
+  "version": "1.0.0",
+  "main": ".build/index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .build",
+    "build": "yarn clean && fastify-boot build",
+    "build:prod": "yarn build production",
+    "start": "fastify-boot start",
+    "start:dev": "yarn build && fastify-boot start",
+    "test": "fastify-boot test",
+    "test:coverage": "yarn test --coverage"
+  },
+  "dependencies": {
+    "fastify": "^3.14.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.21",
+    "fastify-boot": "^1.0.9",
+    "typescript": "^4.2.3"
+  }
+}
