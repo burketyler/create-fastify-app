@@ -1,14 +1,15 @@
 {
-  "name": "create-fastify-app",
-  "version": "1.0.8",
+  "name": "create-fastify-boot",
+  "version": "1.0.2",
   "description": "Set up a Fastify Boot app with one command.",
-  "repository": "https://github.com/burketyler/create-fastify-app",
+  "repository": "https://github.com/burketyler/create-fastify-boot",
   "author": "Tyler Burke",
   "main": ".build/index.js",
   "license": "MIT",
   "files": [
     ".build",
-    "template"
+    "template",
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"

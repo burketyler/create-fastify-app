@@ -1,1 +1,1 @@
-# create-fastify-app
+# create-fastify-boot

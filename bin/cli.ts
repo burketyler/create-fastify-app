@@ -98,5 +98,5 @@ function outputInstructions(appName: string): void {
           chalk.blue("https://github.com/burketyler/fastify-boot/issues\n\n")
       )
   );
-  console.log(chalk.magenta("Thank you for using Fastify Boot! :)\n"));
+  console.log(chalk.magenta("Thank you for using Create Fastify Boot! :)\n"));
 }
