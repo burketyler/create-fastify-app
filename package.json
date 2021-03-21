@@ -1,6 +1,6 @@
 {
   "name": "create-fastify-boot",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Set up a Fastify Boot app with one command.",
   "repository": "https://github.com/burketyler/create-fastify-boot",
   "author": "Tyler Burke",
@@ -15,7 +15,7 @@
     "access": "public"
   },
   "bin": {
-    "create-fastify-boot": "node .build/cli.js"
+    "create-fastify-boot": ".build/cli.js"
   },
   "scripts": {
     "clean": "rm -rf .build",
