@@ -1,6 +1,6 @@
 {
   "name": "create-fastify-boot",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Set up a Fastify Boot app with one command.",
   "repository": "https://github.com/burketyler/create-fastify-boot",
   "author": "Tyler Burke",
@@ -28,7 +28,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "cross-spawn": "^7.0.3",
-    "fastify-boot": "^1.0.12",
+    "fastify-boot": "^1.0.14",
     "fs-extra": "^9.1.0",
     "ts-injection": "^1.1.8",
     "yargs": "^16.2.0"
