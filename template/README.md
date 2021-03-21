@@ -6,7 +6,7 @@ In the project directory, you can run (yarn or npm):
 
 ### `yarn start`
 
-Starts the Fastify server from the bundled index.js file in `/.build/index.js`
+Starts the Fastify server from the bundled output file in `.build/index.js`
 
 ### `yarn start:dev`
 
@@ -16,7 +16,7 @@ Performs a clean build in development mode and starts the Fastify server.
 
 Builds the app in the specified Webpack mode. If no mode provided, defaults to 'development'.
 
-The bundled output is stored in `/.build/index.js`
+The bundled output is stored in `.build/index.js`
 
 ### `yarn test`
 

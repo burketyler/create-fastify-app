@@ -6,9 +6,10 @@ import path from "path";
 import chalk from "chalk";
 import { sync } from "cross-spawn";
 import { execSync } from "child_process";
+import os from "os";
 
 yargs
-  .scriptName("create-fastify-app")
+  .scriptName("create-fastify-boot")
   .usage("$0 <cmd> [args]")
   .command(
     "$0 [appName]",
@@ -40,8 +41,8 @@ function validateAppName(appName: string): void {
   if (!appName) {
     console.error(
       chalk.redBright(
-        "No app name argument provided. Did you mean to use:\n\n" +
-          chalk.cyan("$ create-fastify-boot {appName}\n")
+        `No app name argument provided. Did you mean to use:${os.EOL}${os.EOL}` +
+          chalk.cyan(`$ create-fastify-boot {appName}${os.EOL}`)
       )
     );
     process.exit(1);
@@ -71,7 +72,7 @@ function execCmd(command: string): string | undefined {
 
 function copyTemplate(buildDir: string, appDir: string): void {
   console.log(chalk.yellow(`Copying template files.`));
-  fs.copySync(path.join(buildDir, "../template"), appDir);
+  fs.copySync(path.join(buildDir, "..", "template"), appDir);
 }
 
 function makeAppDir(appDir: string, appName: string): void {
@@ -109,31 +110,39 @@ function install(appDir: string): void {
 
 function outputInstructions(appName: string): void {
   console.log(
-    chalk.green(`Fastify Boot application ${appName} created successfully.\n`)
+    chalk.green(
+      `Fastify Boot application ${appName} created successfully.${os.EOL}`
+    )
   );
   console.log(
-    chalk.gray(`====================================================\n\n`)
+    chalk.gray(
+      `====================================================${os.EOL}${os.EOL}`
+    )
   );
-  console.log(chalk.bgBlackBright("Next steps:\n"));
+  console.log(chalk.bgBlackBright(`Next steps:${os.EOL}`));
   console.log(
     "1. " +
       chalk.yellow(
-        "Go to your project folder and check out the README.md for further information on the different commands available to you.\n"
+        `Go to your project folder and check out the README.md for further information on the different commands available to you.${os.EOL}`
       )
   );
   console.log(
     "2. " +
       chalk.yellow(
-        "Go to the Fastify Boot github for tutorials and information on how to build a Fastify Boot app: " +
-          chalk.blue("https://github.com/burketyler/fastify-boot\n")
+        "Go to the Fastify Boot github for tutorials and information on how to build a in a Fastify Boot project: " +
+          chalk.blue(`https://github.com/burketyler/fastify-boot${os.EOL}`)
       )
   );
   console.log(
     "3. " +
       chalk.yellow(
         "If you encounter and problems please raise a ticket: " +
-          chalk.blue("https://github.com/burketyler/fastify-boot/issues\n\n")
+          chalk.blue(
+            `https://github.com/burketyler/fastify-boot/issues${os.EOL}${os.EOL}`
+          )
       )
   );
-  console.log(chalk.magenta("Thank you for using Create Fastify Boot! :)\n"));
+  console.log(
+    chalk.magenta(`Thank you for using Create Fastify Boot! :)${os.EOL}`)
+  );
 }

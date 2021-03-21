@@ -1,6 +1,6 @@
 {
   "name": "create-fastify-boot",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Set up a Fastify Boot app with one command.",
   "repository": "https://github.com/burketyler/create-fastify-boot",
   "author": "Tyler Burke",
@@ -15,17 +15,22 @@
     "access": "public"
   },
   "bin": {
-    "create-fastify-boot": ".build/cli.js"
+    "create-fastify-boot": "node .build/cli.js"
   },
   "scripts": {
     "clean": "rm -rf .build",
     "build": "yarn clean && tsc && chmod +x .build/cli.js",
+    "prettier": "prettier --write \"**/*.ts\" --loglevel error",
+    "tslint": "tslint -c ./tslint.json src/**/*.ts",
+    "release": "yarn prettier && yarn tslint && yarn build && yarn publish",
     "cm": "git-cz"
   },
   "dependencies": {
     "chalk": "^4.1.0",
     "cross-spawn": "^7.0.3",
+    "fastify-boot": "^1.0.12",
     "fs-extra": "^9.1.0",
+    "ts-injection": "^1.1.8",
     "yargs": "^16.2.0"
   },
   "devDependencies": {
