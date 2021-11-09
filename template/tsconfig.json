@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2021",
     "module": "commonjs",
     "strict": true,
-    "strictNullChecks": false,
-    "noUnusedParameters": false,
+    "strictNullChecks": true,
+    "noUnusedParameters": true,
     "types": [
       "jest"
     ],
