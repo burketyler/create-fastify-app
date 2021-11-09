@@ -50,12 +50,17 @@ function validateAppName(appName: string): void {
 }
 
 function useYarn(): boolean {
-  console.log(
-    chalk.yellow(
-      "Detected yarn installed on machine, using yarn instead of npm."
-    )
-  );
-  return isRuntimeAvailable("yarn");
+  if (isRuntimeAvailable("yarn")) {
+    console.log(
+      chalk.yellow(
+        "Detected yarn installed on machine, using yarn instead of npm."
+      )
+    );
+
+    return true;
+  }
+
+  return false;
 }
 
 function isRuntimeAvailable(dep: string): boolean {

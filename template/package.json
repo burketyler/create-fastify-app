@@ -13,11 +13,11 @@
     "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
-    "fastify": "^3.14.0"
+    "fastify": "3.23.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.21",
-    "fastify-boot": "^1.0.9",
-    "typescript": "^4.2.3"
+    "@types/jest": "27.0.2",
+    "fastify-boot": "1.1.0",
+    "typescript": "4.3.5"
   }
 }
