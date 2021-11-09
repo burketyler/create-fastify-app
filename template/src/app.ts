@@ -4,7 +4,7 @@ import { FastifyApplication, FastifyServer } from "fastify-boot";
 @FastifyApplication
 export class App {
   @FastifyServer()
-  private server: FastifyInstance;
+  private server!: FastifyInstance;
 
   constructor() {}
 
